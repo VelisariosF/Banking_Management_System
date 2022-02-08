@@ -1,8 +1,12 @@
 package Logic;
+
+import java.util.ArrayList;
+
 public class Customer{
     private  String firstname, lastname, username="", password = "";
-    private int customerID, accountID, currentBalance, phoneNumber; //use phone number in case they want to reset the password
+    private int customerID, phoneNumber; //use phone number in case they want to reset the password
     private boolean status;
+    private ArrayList<Integer> customerAccountsIDs = new ArrayList<>(); // a customer can have multiple accounts
 
     public Customer(String firstname, String lastname, int phoneNumber, String username, String password){
         this.firstname = firstname;
@@ -55,12 +59,18 @@ public class Customer{
     }
 
 
-    public void setAccountID(int accountID){
-        this.accountID = accountID;
+    public void addAccountID(int accountID){
+        this.customerAccountsIDs.add(accountID);
     }
 
-    public int getAccountID(){
-        return this.accountID;
+    public boolean checkIfCustomerHasAccountByID(int accountID){
+        for(int id : customerAccountsIDs){
+            if(id == accountID){
+                return true;
+            }
+        }
+
+        return false;
     }
     
     public void setStatus(boolean isActive){
@@ -71,22 +81,7 @@ public class Customer{
         return this.status;
     }
 
-    public int getCurrentBalance(){
-        return this.currentBalance;
-    }
 
-    public void deposit(int amount){
-        this.currentBalance = this.currentBalance + amount;
-    }
-
-    public boolean withdraw(int amount){
-        if(this.currentBalance >= amount){
-            this.currentBalance = this.currentBalance - amount;
-            return true;
-        }
-        return false;
-
-    }
 
 
 }

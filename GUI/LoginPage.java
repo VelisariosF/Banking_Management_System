@@ -23,7 +23,7 @@ public class LoginPage extends JFrame implements ActionListener {
         addActionEvent();
         setTitle("Login Form");
         setVisible(true);
-        setBounds(10, 10, 370, 600);
+        setBounds(0, 0, 650,650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
