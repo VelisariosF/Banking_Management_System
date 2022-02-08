@@ -8,20 +8,20 @@ public class Administrator {
     private static ArrayList<Integer> allAccounts = new ArrayList<>();
 
     // add user method
-    public static void addCustomer(){
+    public static boolean addCustomer(String customerID, String firstname, String lastname, int phoneNumber, String username, String password){
+       Customer customer = new Customer(customerID, firstname, lastname, phoneNumber, username, password);
+       return SQLConnector.insertCustomer(customer);
 
     }
 
-    public static Account getAccountByID(int accountID){
-        for(Account account : allAccounts){
-            if(account.getAccountID() == accountID){
-                return account;
-            }
-        }
-        //account does not exist
-        return null;
+    public static Account getAccountByID(String accountID){
+         return SQLConnector.getAccountByID(accountID);
     }
-    
+
+    public static boolean updateAccountBalance(String accountID, int balance){
+           return SQLConnector.updateAccountBalance(accountID, balance);
+    }
+
     //if this method returns 0 it means one of the given accountIDs does not exist
     //if it returns -1 it means the first account does not have enough balance
     //if it returns 1 it means the transaction was successful
@@ -39,8 +39,8 @@ public class Administrator {
 
 
                  // update account data on the table
-                 setAccountBalanceByID(accountIDFrom, transferFrom.getCurrentBalance());
-                 setAccountBalanceByID(accountIDTo, transferTo.getCurrentBalance());
+                 updateAccountBalance(accountIDFrom, transferFrom.getCurrentBalance());
+                 updateAccountBalance(accountIDTo, transferTo.getCurrentBalance());
 
 
                  // update Accouts in customers table
@@ -57,12 +57,6 @@ public class Administrator {
     
 
 
-    public static void setAccountBalanceByID(int accountID, int currentBalance){
-        for(Account account : allAccounts){
-            if(account.getAccountID() == accountID){
-                account.setCurrentBalance(currentBalance);
-            }
-        }
-    }
+
 
 }

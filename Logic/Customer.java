@@ -8,12 +8,14 @@ public class Customer{
     private boolean status;
 
 
-    public Customer(String firstname, String lastname, int phoneNumber, String username, String password){
+    public Customer(String customerID, String firstname, String lastname, int phoneNumber, String username, String password){
+        this.customerID = customerID;
         this.firstname = firstname;
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
+
     }
 
 

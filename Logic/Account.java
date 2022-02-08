@@ -4,10 +4,10 @@ public class Account {
     private String customerID, accountID;
     private int currentBalance;
     
-    public Account(String accountID, String custommerID){
+    public Account(String accountID, String custommerID, int currentBalance){
         this.accountID = accountID;
         this.customerID = custommerID;
-        this.currentBalance = 0;
+        this.currentBalance = currentBalance;
     }
     
 
