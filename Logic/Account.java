@@ -1,9 +1,10 @@
 package Logic;
 
 public class Account {
-    private int customerID, accountID, currentBalance;
+    private String customerID, accountID;
+    private int currentBalance;
     
-    public Account(int accountID, int custommerID){
+    public Account(String accountID, String custommerID){
         this.accountID = accountID;
         this.customerID = custommerID;
         this.currentBalance = 0;
@@ -11,7 +12,7 @@ public class Account {
     
 
     
-    public int getAccountID(){
+    public String getAccountID(){
         return this.accountID;
     }
 

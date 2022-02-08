@@ -5,13 +5,11 @@ import java.util.HashMap;
 
 public class Administrator {
     
-    private static ArrayList<Account> allAccounts = new ArrayList<>();
-    // pairs in form of (customer, customerAccountIds)
-    private static HashMap<Customer, ArrayList<Integer>> data = new HashMap<>();
+    private static ArrayList<Integer> allAccounts = new ArrayList<>();
 
     // add user method
     public static void addCustomer(){
-        
+
     }
 
     public static Account getAccountByID(int accountID){
@@ -27,7 +25,7 @@ public class Administrator {
     //if this method returns 0 it means one of the given accountIDs does not exist
     //if it returns -1 it means the first account does not have enough balance
     //if it returns 1 it means the transaction was successful
-    public static int trasferTo(int accountIDFrom, int accountIDTo, int amount){
+    public static int trasferTo(String accountIDFrom, String accountIDTo, int amount){
         Account transferFrom = getAccountByID(accountIDFrom);
         Account transferTo = getAccountByID(accountIDTo);
 
